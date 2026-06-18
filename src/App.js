@@ -1,25 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Stats from "./components/Stats";
+import Footer from "./components/Footer";
+import AuthPage from "./pages/auth";
+import AdminDashboard from "./pages/DashboardAdmin";
+import AdminEquipements from "./pages/AdminPage";
+import TechnicienDashboard from "./pages/TechPage";
+import UserDashboard from "./pages/UserPage";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <Stats />
+            </>
+          }
+        />
+        <Route
+          path="/auth"
+          element={
+            <>
+              <AuthPage />
+            </>
+          }
+        />
+        <Route
+          path="/espace-admin"
+          element={
+            <>
+              <AdminDashboard />
+            </>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <>
+              <AdminEquipements />
+            </>
+          }
+        />
+        <Route
+          path="/tech"
+          element={
+            <>
+              <TechnicienDashboard />
+            </>
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <>
+              <UserDashboard />
+            </>
+          }
+        />
+      </Routes>
+      <Footer />
+    </>
   );
 }
-
-export default App;
